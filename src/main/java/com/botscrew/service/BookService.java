@@ -14,7 +14,8 @@ import java.util.List;
 public class BookService {
     public static final String COMMAND_LIST_MESSAGE = "* Add a book to library - add [author's name]/[book title]\n" +
             "* Edit/delete a book - edit book/delete [book title]\n" +
-            "* Get all books from the library - all books";
+            "* Get all books from the library - all books\n"+
+            "* Shutdown the application - exit";
     public static final String NEW_COMMAND_MESSAGE = "Enter your command: ";
     public static final String WRONG_COMMAND_MESSAGE = "Wrong format of command! Please, enter one of these commands: ";
 
