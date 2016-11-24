@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -23,122 +24,135 @@ public class BookService {
                 COMMAND_LIST_MESSAGE);
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String input;
-            String author;
-            String name;
+            String consoleInput;
+
             while (true) {
+                System.out.print(NEW_COMMAND_MESSAGE);
+                consoleInput = reader.readLine();
 
-                input = reader.readLine();
-
-                if (input.equals("exit")) {
+                if (consoleInput.equals("exit")) {
                     System.out.println("Closing an application...");
                     System.exit(0);
                 }
-                if (input.isEmpty()) {
+
+                if (consoleInput.isEmpty()) {
                     System.out.println("Please, enter one of these commands:\n" + COMMAND_LIST_MESSAGE);
                     continue;
                 }
 
+                //>>Ready
+                if (consoleInput.matches("^add (?:[^/]+)/(?:[^/]+)$")) {
 
-                if (input.startsWith("add ")) {
-                    String command = input.replaceFirst("add ", "");
-                    if (!command.matches("^(?:[^/]+)/(?:[^/]+)$")) {
-                        System.out.println(WRONG_COMMAND_MESSAGE + "\n" + COMMAND_LIST_MESSAGE);
-                        continue;
-                    }
-                    author = command.substring(0, command.indexOf("/"));
-                    name = command.substring(command.indexOf("/") + 1, command.length());
-                    Book book = repository.save(new Book(author, name));
-                    System.out.println("Book \"" + book.getAuthor() + " : " + book.getName() + "\" was added\n" + NEW_COMMAND_MESSAGE);
-                }
+                    String bookInfo = consoleInput.replaceFirst("add ", "");
+                    String author = bookInfo.substring(0, bookInfo.indexOf("/"));
+                    String bookName = bookInfo.substring(bookInfo.indexOf("/") + 1, bookInfo.length());
+                    Book newBook = repository.save(new Book(author, bookName));
+                    System.out.println("Book \"" + newBook.getAuthor() + " : " + newBook.getName() + "\" was added");
 
+                } else
+                if (consoleInput.matches("^remove (?:.*)")) {
 
-                if (input.startsWith("remove ")) {
+                    String bookInfo = consoleInput.replaceFirst("remove ", "");
 
-                    String command = input.replaceFirst("remove ", "");
-
-                    if (command.isEmpty()) {
+                    if (bookInfo.isEmpty()) {
                         System.out.println(WRONG_COMMAND_MESSAGE + "\n" + COMMAND_LIST_MESSAGE);
                         continue;
                     }
 
-                    name = command.substring(0, command.length());
-                    Book book = repository.findOneByName(name);
+                    String bookName = bookInfo.substring(0, bookInfo.length());
+                    List<Book> booksFound = repository.findByNameOrderByAuthorAsc(bookName);
 
-                    if (book == null) {
-                        System.out.println("Book with this name is absent in our library.\n" +
-                                "Please, enter one of these commands\n" + COMMAND_LIST_MESSAGE);
+                    if (booksFound.isEmpty()){
+                        System.out.println("Books with this name are absent in our library.");
                         continue;
                     }
 
-                    repository.delete(book.getId());
-                    System.out.println("Book \"" + book.getAuthor() + " : " + book.getName() + "\" was removed\n" + NEW_COMMAND_MESSAGE);
-                }
+                    Book bookFound;
+                    if ((bookFound = getBookFromLibrary(booksFound, reader))==null){
+                        continue;
+                    }
 
+                    repository.delete(bookFound.getId());
+                    System.out.println("Book \"" + bookFound.getAuthor() + " : " + bookFound.getName() + "\" was removed");
 
-                if (input.startsWith("edit book ")) {
+                }else
+                if (consoleInput.matches("^edit book (?:.*)")) {
 
-                    String command = input.replaceFirst("edit book ", "");
+                    String bookInfo = consoleInput.replaceFirst("edit book ", "");
 
-                    if (command.isEmpty()) {
+                    if (bookInfo.isEmpty()) {
                         System.out.println(WRONG_COMMAND_MESSAGE + "\n" + COMMAND_LIST_MESSAGE);
                         continue;
                     }
 
-                    name = command.substring(0, command.length());
-                    List<Book> books = repository.findByNameOrderByAuthor(name);
+                    String bookName = bookInfo.substring(0, bookInfo.length());
+                    List<Book> booksFound = repository.findByNameOrderByAuthorAsc(bookName);
 
-                    if (books.size() > 1) {
-                        System.out.println("We have few books with such name please choose one by typing a number of book:");
-
-                        for (int i = 0; i < books.size(); i++) {
-                            System.out.println(i + 1 + ". " + books.get(i).getAuthor() + " : " + books.get(i).getName());
-                        }
-
-                        input = reader.readLine();
-
-                        if (input.isEmpty() || Integer.parseInt(input) < 0 || Integer.parseInt(input) > books.size()) {
-                            System.out.println("Wrong number\n" + NEW_COMMAND_MESSAGE);
-                            continue;
-                        }
-                    } else {
-                        Book book = books.get(0);
-
-                        if (book == null) {
-                            System.out.println("Book with this name is absent in our library.\n" +
-                                    "Please, enter one of these commands\n" + COMMAND_LIST_MESSAGE);
-                            continue;
-                        }
-
-                        System.out.println("Book \"" + book.getAuthor() + " : " + book.getName() + "\" was found\n" +
-                                "Enter a new name for the book, please: ");
-
-                        if ((name = reader.readLine()).isEmpty()) {
-                            System.out.println("Wrong name\n" + NEW_COMMAND_MESSAGE);
-                            continue;
-                        }
-                        book.setName(name);
-                        book = repository.save(book);
-                        System.out.println("Book \"" + book.getAuthor() + " : " + book.getName() + "\" was saved\n" + NEW_COMMAND_MESSAGE);
+                    if (booksFound.isEmpty()){
+                        System.out.println("Books with this name are absent in our library.");
+                        continue;
                     }
-                }
 
+                    Book bookFound;
+                    if ((bookFound = getBookFromLibrary(booksFound, reader))==null){
+                        continue;
+                    }
 
-                if (input.startsWith("all books ")) {
+                    System.out.println("Enter a new name for the book, please:");
+
+                    if ((bookName = reader.readLine()).isEmpty()) {
+                        System.out.println("Wrong name");
+                        continue;
+                    }
+                    bookFound.setName(bookName);
+                    bookFound = repository.save(bookFound);
+                    System.out.println("Book \"" + bookFound.getAuthor() + " : " + bookFound.getName() + "\" was saved");
+
+                }else
+                if (consoleInput.matches("^all books$")) {
+
+                    List<Book> books = repository.findAllByOrderByNameAsc();
+                    if (books.isEmpty()) {
+                        System.out.println("The library is empty");
+                        continue;
+                    }
                     System.out.println("Our books:");
-                    for (Book book : repository.findAllOrderByNameASC()) {
-                        System.out.println(book.getAuthor() + " : " + book.getName());
+                    for (Book book : books) {
+                        System.out.println("* "+book.getAuthor() + " : " + book.getName());
                     }
+
+                } else {
+                    System.out.println(WRONG_COMMAND_MESSAGE + "\n" + COMMAND_LIST_MESSAGE);
                 }
-                System.out.println(NEW_COMMAND_MESSAGE);
             }
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error has been occurred");
             System.err.println(e.getCause() + " : " + e.getMessage());
             System.exit(1);
         }
 
+    }
+
+    private Book getBookFromLibrary(List<Book> booksFound, BufferedReader reader) throws IOException {
+        if (booksFound.size()>1) {
+            System.out.println("We have few books with such name please choose one by typing a number of book:");
+
+            for (int i = 0; i < booksFound.size(); i++) {
+                System.out.println(i + 1 + ". " + booksFound.get(i).getAuthor() + " : " + booksFound.get(i).getName());
+            }
+
+            int number;
+            try {
+                number = Integer.parseInt(reader.readLine());
+                return booksFound.get(number - 1);
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                System.out.println("Wrong number");
+                return null;
+            }
+        } else {
+            return booksFound.get(0);
+        }
     }
 
 }
