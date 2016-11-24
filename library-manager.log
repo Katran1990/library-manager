@@ -36,3 +36,72 @@
 15:39:27.263 [main] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
 15:39:27.301 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
 15:39:27.312 [main] INFO  c.botscrew.LibraryManagerApplication - Started LibraryManagerApplication in 14.801 seconds (JVM running for 16.151)
+20:49:11.756 [main] INFO  c.b.LibraryManagerApplicationTests - Starting LibraryManagerApplicationTests on Boris-PC with PID 1636 (started by Boris in C:\Users\Boris\IdeaProjects\library-manager)
+20:49:11.778 [main] INFO  c.b.LibraryManagerApplicationTests - No active profile set, falling back to default profiles: default
+20:49:11.883 [main] INFO  o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1972e513: startup date [Thu Nov 24 20:49:11 EET 2016]; root of context hierarchy
+20:49:12.711 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.4.Final
+20:49:16.065 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a0d4f834] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+20:49:17.614 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+20:49:17.652 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+20:49:17.827 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.11.Final}
+20:49:17.830 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+20:49:17.833 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+20:49:17.932 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+20:49:18.821 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+20:49:20.704 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+20:49:20.730 [main] INFO  o.h.t.s.e.i.InformationExtractorJdbcDatabaseMetaDataImpl - HHH000262: Table not found: books
+20:49:20.735 [main] INFO  o.h.t.s.e.i.InformationExtractorJdbcDatabaseMetaDataImpl - HHH000262: Table not found: books
+20:49:21.177 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:49:22.912 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@1972e513: startup date [Thu Nov 24 20:49:11 EET 2016]; root of context hierarchy
+20:49:23.103 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+20:49:23.105 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+20:49:23.179 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+20:49:23.180 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+20:49:23.279 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+20:49:23.943 [main] INFO  c.b.LibraryManagerApplicationTests - Started LibraryManagerApplicationTests in 13.607 seconds (JVM running for 18.092)
+20:49:24.074 [Thread-2] INFO  o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@1972e513: startup date [Thu Nov 24 20:49:11 EET 2016]; root of context hierarchy
+20:49:24.080 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:16:11.667 [main] INFO  c.botscrew.LibraryManagerApplication - Starting LibraryManagerApplication on Boris-PC with PID 5748 (C:\Users\Boris\IdeaProjects\library-manager\target\classes started by Boris in C:\Users\Boris\IdeaProjects\library-manager)
+21:16:11.686 [main] INFO  c.botscrew.LibraryManagerApplication - No active profile set, falling back to default profiles: default
+21:16:11.940 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4f83df68: startup date [Thu Nov 24 21:16:11 EET 2016]; root of context hierarchy
+21:16:13.286 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.4.Final
+21:16:16.971 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$282b6f8b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+21:16:18.266 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+21:16:18.297 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+21:16:18.299 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.6
+21:16:18.572 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+21:16:18.573 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 6703 ms
+21:16:18.915 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+21:16:18.924 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+21:16:18.924 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+21:16:18.925 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+21:16:18.926 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+21:16:19.561 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+21:16:19.597 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+21:16:19.746 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.11.Final}
+21:16:19.748 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+21:16:19.751 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+21:16:19.830 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+21:16:20.591 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+21:16:21.577 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+21:16:21.778 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:16:22.827 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4f83df68: startup date [Thu Nov 24 21:16:11 EET 2016]; root of context hierarchy
+21:16:22.970 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+21:16:22.972 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+21:16:23.019 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:16:23.019 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:16:23.079 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:16:23.578 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+21:16:23.612 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+21:16:23.635 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-8080]
+21:16:23.658 [main] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+21:16:23.709 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+21:16:23.718 [main] INFO  c.botscrew.LibraryManagerApplication - Started LibraryManagerApplication in 13.656 seconds (JVM running for 14.692)
+21:16:28.597 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+21:16:41.366 [Thread-3] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4f83df68: startup date [Thu Nov 24 21:16:11 EET 2016]; root of context hierarchy
+21:16:41.386 [Thread-3] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+21:16:41.397 [Thread-3] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
