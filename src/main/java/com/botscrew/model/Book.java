@@ -15,6 +15,19 @@ public class Book {
     @NotNull
     private String name;
 
+    public Book(){}
+
+    public Book(String author, String name) {
+        this.author = author;
+        this.name = name;
+    }
+
+    public Book(long id, String author, String name) {
+        this.id = id;
+        this.author = author;
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }
