@@ -12,7 +12,6 @@ import java.util.List;
 
 @Service
 public class BookService {
-
     public static final String COMMAND_LIST_MESSAGE = "* Add a book to library - add [author's name]/[book title]\n" +
             "* Edit/delete a book - edit book/delete [book title]\n" +
             "* Get all books from the library - all books";
